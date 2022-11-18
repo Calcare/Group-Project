@@ -1,4 +1,5 @@
 main > .container{
+    margin-top: 80px;
     margin-bottom: 30px;
     padding: 20px;
     border-radius: 12px;
@@ -36,18 +37,22 @@ form .container{
     margin-right: 3rem;
 }
 .formKiri input{
-    border-color: #11999E;
+    border-color: #11999E !important;
 }
 .formKiri select{
-    border-color: #11999E;
+    border-color: #11999E !important;
     color: gray;
 }
 .formKanan{
     width: 50%;
 }
 .formKanan select{
-    border-color: #11999E;
+    border-color: #11999E !important;
     color: gray;
+}
+
+.formKanan input{
+    border-color: #11999E !important;
 }
 form p{
     display: flex;
@@ -71,6 +76,7 @@ form button{
     color: red;
 }
 .signUp .container #signUp{
+    width: 50%;
     color: white !important;
     background-color: grey !important ;
     border-color: grey !important;
@@ -81,6 +87,7 @@ form button{
     box-shadow: 2px 3px 5px rgb(39, 39, 39);
 }
 .signUp #google{
+    width: 50%;
     color: #40514E;
     background-color: transparent !important;
     border-color: grey !important;
@@ -91,6 +98,7 @@ form button{
     box-shadow: 2px 3px 5px rgb(39, 39, 39);
 }
 .signUp #facebook{
+    width: 50%;
     color: #40514E;
     background-color: transparent !important;
     border-color: grey !important;

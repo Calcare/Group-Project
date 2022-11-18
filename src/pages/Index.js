@@ -15,7 +15,7 @@ const Index = () => {
 
       <NavbarIndex url="/LogIn" name="Masuk"/>
 
-      <main>
+      <main className='index'>
         <div className="container-fluid">
             <div className="container">
                 <section>
