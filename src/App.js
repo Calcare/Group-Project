@@ -2,8 +2,10 @@ import {Routes, Route} from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import Index from './pages/Index';
 import LogIn from './pages/LogIn';
+import Makanan from './pages/Makanan';
 import PilihMakanan from './pages/PilihMakanan';
 import SignUp from './pages/SingUp';
+import TrackCal from './pages/TrackCal';
 
 function App() {
   return (
