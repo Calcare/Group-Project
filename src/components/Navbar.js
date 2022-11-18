@@ -4,6 +4,17 @@ import CalcareLogo from '../assets/img/CalcareLogo.png'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            document.querySelector("nav").style.backgroundColor = "white";
+        } else {
+            document.querySelector("nav").style.backgroundColor = "transparent";
+        }
+    }
   return (
     <>
       <nav className="navbar fixed-top navbar-expand-lg navbar-light ">
