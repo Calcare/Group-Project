@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style/css/TrackCal.css'
 import Footer from '../components/Footer'
 import NavbarIndex from '../components/NavbarIndex'
 import { Link } from 'react-router-dom'
 
 const TrackCal = () =>{
+    
 
     
 
@@ -26,18 +27,18 @@ const TrackCal = () =>{
             </div>
             <div class="container section-track-kal">
                 <div class="container track-left">
-                    <div class="card card-left" >
+                    <div class="card card-left" style={{width:(750)}}>
                         <div class="row g-0">
                             <h6 class="heading-card">Kebutuhan Kalori Harian</h6>
                             <div class="col-md-6 chart-item">
                                 <div class="chart-container">
                                     <div class="chart " data-percent="92" data-bar-color="#11999E">
-                                        <span class="percent" data-after="Kkal"></span>
+                                    
                                     </div>
                                 </div>
                             </div>
                           
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                             <div class="card-body">
                               <h5 class="card-title">Dibutuhkan</h5>
                               <p class="card-text"> <span class="fw-bold" id="hitung-cal"></span>  Kkal</p>
