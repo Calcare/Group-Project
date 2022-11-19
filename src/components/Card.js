@@ -10,14 +10,17 @@ const Card = () => {
         .then(res => {
             setPost(res.data)
         })
+        .catch(err =>{
+            // console.log(post)
+        })
     },)
   return (
     <>
-        {post.map((post
-        )=>{return(
+        {post.map((post)=>
+        {return(
             <>
-            <div className='col'>
-            <div className="card pilihMakanan h-100" key={post.id} {...post}>
+            <div className='col' key={post.id} >
+            <div className="card pilihMakanan h-100">
                 <img src={post.image} className="card-img-top" alt=""/>
                 <div className="card-body">
                     <h5 className="card-title">{post.name}</h5>
@@ -29,13 +32,13 @@ const Card = () => {
                 <div className="card-footer">
                     <div className="card-button">
                         <button  className="btn btn-primary me-2" id="pilih" >Pilih</button>
-                        <a className="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="detail">Detail</a>
+                        <a className="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target={'#card'+post.id} id="detail">Detail</a>
                     </div>
                 </div>
             </div>
-            </div>
+            
        
-            <div className="modal  fade" id="exampleModal" tabIndex={-1}  aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal  fade" id={'card'+post.id} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -61,6 +64,7 @@ const Card = () => {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             
             </>)})
