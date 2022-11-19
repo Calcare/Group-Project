@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import '../style/css/TrackCal.css'
 import Footer from '../components/Footer'
-import NavbarIndex from '../components/NavbarIndex'
 import { Link } from 'react-router-dom'
 import {Chart as ChartJs, Tooltip, Title, ArcElement, Legend} from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import {IoChevronBack} from 'react-icons/io5'
+import Navbar from '../components/Navbar'
 
 ChartJs.register(
     Tooltip, Title, ArcElement, Legend
@@ -103,12 +104,12 @@ getData();
 
     return(
         <div className='Track-Cal'>
-            <NavbarIndex url="/SignUp" name="Daftar"/>
+            <Navbar/>
             <main>
             <div class="container-fluid">
             <div class="container section-atas">
                 <div class="row backIcon">
-                    <a href="../homepage.html" class="" id="back"><i class="fa-solid fa-chevron-left fa-2xl"></i></a>
+                    <Link className="back" to='/Homepage'><IoChevronBack size={35}/></Link>
                 </div>
                 <div class="teks">
                     <h6 class="heading">Track Kalori</h6>
@@ -132,7 +133,7 @@ getData();
                           <div class="col-md-3">
                             <div class="card-body">
                               <h5 class="card-title">Dibutuhkan</h5>
-                              <p class="card-text" style={{fontWeight:'bold', fontStyle:'normal'}}> <span class="fw-bold" id="hitung-cal" style={{fontWeight:'bold', fontStyle:'normal'}}></span>  Kkal</p>
+                              <p class="card-text" style={{fontWeight:'bold', fontStyle:'normal'}}> <span class="fw-bold" id="hitung-cal"></span>  Kkal</p>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">Terpenuhi</h5>
