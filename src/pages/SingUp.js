@@ -31,18 +31,17 @@ const SignUp = () => {
             }
             else{
                 navigate("/LogIn")
+                localStorage.setItem("nama",nama);
+                localStorage.setItem("email",email);
+                localStorage.setItem("nomorTelepon",nomorTelepon);
+                localStorage.setItem("pass",pass);
+                localStorage.setItem("confirmPass",confirmPass);
+                localStorage.setItem("kelamin",kelamin);
+                localStorage.setItem("tinggi",tinggi);
+                localStorage.setItem("berat",berat);
+                localStorage.setItem("umur",umur);
+                localStorage.setItem("aktivitas",aktivitas);
             }
-
-            localStorage.setItem("nama",nama);
-            localStorage.setItem("email",email);
-            localStorage.setItem("nomorTelepon",nomorTelepon);
-            localStorage.setItem("pass",pass);
-            localStorage.setItem("confirmPass",confirmPass);
-            localStorage.setItem("kelamin",kelamin);
-            localStorage.setItem("tinggi",tinggi);
-            localStorage.setItem("berat",berat);
-            localStorage.setItem("umur",umur);
-            localStorage.setItem("aktivitas",aktivitas);
         }
     
   return (
