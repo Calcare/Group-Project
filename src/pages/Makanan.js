@@ -1,14 +1,14 @@
 import React from "react";
 import '../style/css/makanan.css'
 import Footer from '../components/Footer'
-import NavbarIndex from '../components/NavbarIndex'
 import { Link } from 'react-router-dom'
 import {IoChevronBack} from 'react-icons/io5'
+import Navbar from "../components/Navbar";
 
 const Makanan = () => {
     return(
         <div className="makanan">
-            <NavbarIndex url="/SignUp" name="Daftar"/>
+            <Navbar/>
             <main>
             <div class="container-fluid">
             <div class="container section-atas">
