@@ -3,10 +3,82 @@ import '../style/css/TrackCal.css'
 import Footer from '../components/Footer'
 import NavbarIndex from '../components/NavbarIndex'
 import { Link } from 'react-router-dom'
+import {Chart as ChartJs, Tooltip, Title, ArcElement, Legend} from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+
+ChartJs.register(
+    Tooltip, Title, ArcElement, Legend
+  );
+  
 
 const TrackCal = () =>{
     
+  const [data, setData] = useState({
+    datasets: [{
+        data: [340, 1400],
+        backgroundColor:[
 
+          '#11999E',
+          '#AFEFE3'
+        ]
+    },
+  ],
+  
+});
+
+const [dataKarbo, setDataKarbo] = useState({
+  datasets: [{
+      data: [500, 1000],
+      backgroundColor:[
+
+        '#11999E',
+        '#AFEFE3'
+      ]
+  },
+],
+
+});
+  
+
+const [dataProtein, setDataProtein] = useState({
+  datasets: [{
+      data: [150, 800],
+      backgroundColor:[
+
+        '#11999E',
+        '#AFEFE3'
+      ]
+  },
+],
+
+});
+
+const [dataLemak, setDataLemak] = useState({
+  datasets: [{
+      data: [350, 800],
+      backgroundColor:[
+
+        '#11999E',
+        '#AFEFE3'
+      ]
+  },
+],
+
+});
+
+const [dataKarbon, setDataKarbon] = useState({
+  datasets: [{
+      data: [850, 1000],
+      backgroundColor:[
+
+        '#11999E',
+        '#AFEFE3'
+      ]
+  },
+],
+
+});
+  
     
 
 
@@ -33,7 +105,7 @@ const TrackCal = () =>{
                             <div class="col-md-6 chart-item">
                                 <div class="chart-container">
                                     <div class="chart " data-percent="92" data-bar-color="#11999E">
-                                    
+                                      <Doughnut data={data}/>
                                     </div>
                                 </div>
                             </div>
@@ -57,8 +129,7 @@ const TrackCal = () =>{
                             <div class="col-md-6 chart-item-right">
                                 <div class="chart-container-right">
                                     <div class="chart chart-right" data-percent="72" data-bar-color="#11999E">
-                                        <span class="percent" data-after="Kkal"></span>
-                                        
+                                        <Doughnut data={dataKarbo}/>
                                     </div>
                                     
                                 </div>
@@ -77,7 +148,7 @@ const TrackCal = () =>{
                             <div class="col-md-6 chart-item-right">
                                 <div class="chart-container-right">
                                     <div class="chart chart-right" data-percent="32" data-bar-color="#11999E">
-                                        <span class="percent" data-after="Kkal"></span>
+                                        <Doughnut data={dataProtein}/>
                                         
                                     </div>
                                     
@@ -98,7 +169,7 @@ const TrackCal = () =>{
                             <div class="col-md-6 chart-item-right">
                                 <div class="chart-container-right">
                                     <div class="chart chart-right" data-percent="62" data-bar-color="#11999E">
-                                        <span class="percent" data-after="Kkal"></span>
+                                        <Doughnut data={dataLemak}/>
                                         
                                     </div>
                                     
@@ -119,7 +190,7 @@ const TrackCal = () =>{
                             <div class="col-md-6 chart-item-right">
                                 <div class="chart-container-right">
                                     <div class="chart chart-right" data-percent="42" data-bar-color="#11999E">
-                                        <span class="percent" data-after="Kkal"></span>
+                                        <Doughnut data={dataKarbon}/>
                                         
                                     </div>
                                     
