@@ -13,7 +13,7 @@ const Makanan = () => {
             <div class="container-fluid">
             <div class="container section-atas">
                 <div class="row backIcon">
-                    <Link className="back" to='/Homepage'><IoChevronBack size={35}/></Link>
+                    <Link className="back" to='/Home'><IoChevronBack size={35}/></Link>
                 </div>
                 <div class="teks">
                     <h6 class="heading">Daftar Pilihan Makanan</h6>
