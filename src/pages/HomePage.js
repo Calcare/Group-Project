@@ -9,6 +9,7 @@ import G4 from '../assets/img/4.jpeg'
 import { Link } from 'react-router-dom'
 import "../style/css/homePage.css"
 
+
 const HomePage = () => {
   return (
     <div>
