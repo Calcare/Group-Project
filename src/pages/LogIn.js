@@ -12,13 +12,15 @@ const LogIn = () => {
     const [email, setEmail] = useState("")
     const userPass = localStorage.getItem("pass")
     const userEmail = localStorage.getItem("email")
+    const [errors, setErrors] = useState(false)
 
     const handleSubmit = (e) =>{
         e.preventDefault();
         if(email === userEmail && pass === userPass){
             navigate('/Home')
-            
-            
+        }
+        else if(email == 0 || pass == 0){
+            setErrors(true)
         }
         else{
             navigate('/logIn')
@@ -47,11 +49,13 @@ const LogIn = () => {
                         <div className="mb-3 mt-4 check">
                             <input type="email" className="form-control" name="email" id="email"
                                 aria-describedby="emailHelp"  placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                            {errors && email.length<=0 ? <p id='massage'>Email tidak boleh kosong</p> :""}
                         </div>
                         <p id="emailStatus"></p>
                         <div className="mb-3">
                             <input type="password" className="form-control" name="pass" id="pass"
                                  placeholder="Password" value={pass} onChange={(e)=>setPass(e.target.value)}/>
+                            {errors && pass.length<=0 ? <p id='massage'>Password tidak boleh kosong</p> :""}
                         </div>
                         <p id="passwordStatus"></p>
                         <div className="mb-3 form-check">
