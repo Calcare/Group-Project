@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import Card from '../components/Card'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import "../style/css/pilihMakanan.css"
+import "../style/css/card.css"
 
 const PilihMakanan = () => {
+    const [post, setPost] = useState([])
+    const [filter, setFilter] = useState('')
+    
+    
+    useEffect(()=>{
+        axios.get("https://6354fd4ada523ceadcf7e8d1.mockapi.io/eats")
+        .then(res => {
+            setPost(res.data)
+        })
+        .catch(err =>{
+            // console.log(post)
+        })
+    },)
+    
   return (
     <div>
       <Navbar/>
@@ -24,13 +40,34 @@ const PilihMakanan = () => {
                     </div>
                     <div className='container pb-5'>
                         <div className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" id="search"placeholder="Search" aria-label="Search"/>
-                            <button className="btn btn-outline-success" id='submit' type="submit">Search</button>
+                            <input className="form-control me-2" type="search" onChange={(e)=>{setFilter(e.target.value)}} id="search" placeholder="Search" aria-label="Search"/>
                         </div>
                     </div>
                     <div className='container pb-5'>
                         <div className='row justify-content-center row-cols-1 row-cols-md-3 lg-3 g-4'>
-                            <Card/>
+                            {post.filter((post)=>{
+                                if(filter == ""){
+                                    return post
+                                }
+                                else if(post.name.toLowerCase().includes(filter.toLocaleLowerCase())){
+                                    return post
+                                }
+                            }).map((post, index) =>{
+                                return(
+                                    <Card 
+                                        id={post.id} 
+                                        post={post} 
+                                        key={index} 
+                                        image={post.image} 
+                                        name={post.name} 
+                                        protein={post.protein} 
+                                        calories={post.calories} 
+                                        carbohydrate={post.carbohydrate} 
+                                        fat={post.fat}
+                                    />
+                                )
+                            })}
+                            
                         </div>
                     </div>
                     </div>

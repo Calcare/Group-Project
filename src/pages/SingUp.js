@@ -5,6 +5,7 @@ import NavbarIndex from '../components/NavbarIndex'
 import { Link, useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+    
     const navigate = useNavigate();
         const [nama, setNama ] = useState("");
         const [email, setEmail ] = useState("");
@@ -16,20 +17,31 @@ const SignUp = () => {
         const [aktivitas, setAktivitas ] = useState("");
         const [kelamin, setKelamin ] = useState("");
         const [umur, setUmur ] = useState("");
-        
+        const [errors, setErrors] = useState(false)
         const handleSubmit = (e) =>{
             e.preventDefault();
-            localStorage.setItem("nama",nama);
-            localStorage.setItem("email",email);
-            localStorage.setItem("nomorTelepon",nomorTelepon);
-            localStorage.setItem("pass",pass);
-            localStorage.setItem("confirmPass",confirmPass);
-            localStorage.setItem("kelamin",kelamin);
-            localStorage.setItem("tinggi",tinggi);
-            localStorage.setItem("berat",berat);
-            localStorage.setItem("umur",umur);
-            localStorage.setItem("aktivitas",aktivitas);
-            navigate("/logIn")
+            if(nama.length==0 || email.length==0 || pass.length==0 || confirmPass.length==0 || tinggi.length==0 || berat.length==0 ||aktivitas.length==0 || kelamin.length==0 ||umur.length==0 ||nomorTelepon.length==0){
+                setErrors(true)
+            }
+            else if(!/\S+@\S+\.\S+/.test(email)){
+                setErrors(true)
+            }
+            else if(confirmPass !== pass){
+                setErrors(true)
+            }
+            else{
+                navigate("/LogIn")
+                localStorage.setItem("nama",nama);
+                localStorage.setItem("email",email);
+                localStorage.setItem("nomorTelepon",nomorTelepon);
+                localStorage.setItem("pass",pass);
+                localStorage.setItem("confirmPass",confirmPass);
+                localStorage.setItem("kelamin",kelamin);
+                localStorage.setItem("tinggi",tinggi);
+                localStorage.setItem("berat",berat);
+                localStorage.setItem("umur",umur);
+                localStorage.setItem("aktivitas",aktivitas);
+            }
         }
     
   return (
@@ -50,40 +62,48 @@ const SignUp = () => {
                                 <h6>Nama</h6>
                             </label>
                             <input type="text" className="form-control" id="nama" name="nama" 
-                                placeholder="Nama" required value={nama} onChange={(e)=> setNama(e.target.value
+                                placeholder="Nama"  value={nama} onChange={(e)=> setNama(e.target.value
                                 )}/>
+                            {errors && nama.length<=0 ? <p id='massage'>Nama tidak boleh kosong</p> :""}
                         </div>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">
                                 <h6>Email</h6>
                             </label>
                             <input type="email" className="form-control" id="email" name="email"
-                                 placeholder="Email" required value={email} onChange={(e)=> setEmail(e.target.value
+                                 placeholder="Email"  value={email} onChange={(e)=> setEmail(e.target.value
                                 )}/>
+                            {errors && email.length<=0 ?
+                            <p id='massage'>Email tidak boleh kosong</p> :""}
+                            {errors && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email) ? <p id='massage'>Email tidak boleh kosong</p> :"" }
                         </div>
                         <div className="mb-3">
                             <label htmlFor="nomorTelepon" className="form-label">
                                 <h6>Nomor Telepon</h6>
                             </label>
                             <input type="text" className="form-control" id="nomorTelepon" name="nomorTelepon"
-                                 placeholder="Nomor Telepon" required value={nomorTelepon} onChange={(e)=> setNomorTelepon(e.target.value
+                                 placeholder="Nomor Telepon"  value={nomorTelepon} onChange={(e)=> setNomorTelepon(e.target.value
                                 )}/>
+                            {errors && nomorTelepon.length<=0 ? <p id='massage'>Nomor telepon tidak boleh kosong</p> :""}
                         </div>
                         <div className="mb-3">
                             <label htmlFor="pass" className="form-label">
                                 <h6>Password</h6>
                             </label>
                             <input type="password" className="form-control" id="pass" name="pass"
-                                 placeholder="Password" required value={pass} onChange={(e)=> setPass(e.target.value
+                                 placeholder="Password"  value={pass} onChange={(e)=> setPass(e.target.value
                                 )}/>
+                            {errors && pass.length<=0 ? <p id='massage'>Password tidak boleh kosong</p> :""}
                         </div>
                         <div className="mb-3">
                             <label htmlFor="confirmPass" className="form-label">
                                 <h6>Konfirmasi Password</h6>
                             </label>
                             <input type="password" className="form-control" id="confirmPass" name="confirmPass"
-                                 placeholder="Konfirmasi Password" required value={confirmPass} onChange={(e)=> setConfirmPass(e.target.value
+                                 placeholder="Konfirmasi Password"  value={confirmPass} onChange={(e)=> setConfirmPass(e.target.value
                                 )}/>
+                            {errors && confirmPass.length<=0 ? <p id='massage'>Konfirmasi password tidak boleh kosong</p> :""}
+                            {errors && confirmPass !== pass ? <p id='massage'>Konfirmasi password tidak sama dengan password yang telah dimasukkan sebelumnya</p> :""}
                         </div>
                     </div>
                     <div className="formKanan">
@@ -97,43 +117,48 @@ const SignUp = () => {
                                 <option value="Laki - Laki">Laki - Laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
+                            {errors && kelamin.length<=0 ? <p id='massage'>Jenis kelamin tidak boleh kosong</p> :""}
                         </div>
                         <div className="mb-3">
                             <label htmlFor="tinggi" className="form-label">
                                 <h6>Tinggi Badan (Cm)</h6>
                             </label>
                             <input type="text" className="form-control" id="tinggi" name="tinggi"
-                                 placeholder="Tinggi Badan" required value={tinggi} onChange={(e)=> setTinggi(e.target.value
+                                 placeholder="Tinggi Badan"  value={tinggi} onChange={(e)=> setTinggi(e.target.value
                                 )}/>
+                            {errors && tinggi.length<=0 ? <p id='massage'>Tinggi badan tidak boleh kosong</p> :""}
                         </div>
                         <div className="mb-3">
                             <label htmlFor="berat" className="form-label">
                                 <h6>Berat Badan (Kg)</h6>
                             </label>
                             <input type="text" className="form-control" id="berat" name="berat"
-                                 placeholder="Berat Badan" required value={berat} onChange={(e)=> setBerat(e.target.value
+                                 placeholder="Berat Badan"  value={berat} onChange={(e)=> setBerat(e.target.value
                                 )}/>
+                            {errors && berat.length<=0 ? <p id='massage'>Berat badan tidak boleh kosong</p> :""}
                         </div>
                         <div className="mb-3">
                             <label htmlFor="umur" className="form-label">
                                 <h6>Umur (Tahun)</h6>
                             </label>
                             <input type="text" className="form-control" id="umur" name="umur" 
-                                placeholder="Umur" required value={umur} onChange={(e)=> setUmur(e.target.value
+                                placeholder="Umur"  value={umur} onChange={(e)=> setUmur(e.target.value
                                 )}/>
+                            {errors && umur.length<=0 ? <p id='massage'>Umur tidak boleh kosong</p> :""}
                         </div>
                         <div className="mb-3">
                             <label htmlFor="aktivitas" className="form-label">
                                 <h6>Aktivitas Fisik</h6>
                             </label>
                                 <select className="form-select" id="aktivitas" name="aktivitas"
-                                required value={aktivitas} onChange={(e)=> setAktivitas(e.target.value
+                                 value={aktivitas} onChange={(e)=> setAktivitas(e.target.value
                                 )}>
                                     <option  selected>Pilih Aktivitas Fisik</option>
                                     <option value="Sering Berolahraga">Sering Berolahraga</option>
                                     <option value="Jarang Berolahraga">Jarang Berolahraga</option>
                                     <option value="Tidak Pernah Berolahraga">Tidak Pernah Berolahraga</option>
                                 </select>
+                                {errors && aktivitas.length<=0 ? <p id='massage'>Aktivitas tidak boleh kosong</p> :""}
                         </div>
                     </div>
                 </div>
